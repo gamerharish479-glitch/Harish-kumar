@@ -748,11 +748,7 @@ Book Your Test
 </h2>
 
 <div id="successMessage" class="success-message">
-✓ Appointment booked successfully! Check your email for confirmation.
-</div>
-
-<div id="errorMessage" class="error-message">
-✗ Error booking appointment. Please try again.
+✓ Appointment booked successfully! Opening WhatsApp to confirm your booking.
 </div>
 
 <form id="bookingForm">
@@ -933,11 +929,7 @@ satyamgay01012000@gmail.com
 <br><br>
 
 <div id="contactSuccessMessage" class="success-message">
-✓ Message sent successfully! We'll get back to you soon.
-</div>
-
-<div id="contactErrorMessage" class="error-message">
-✗ Error sending message. Please try again.
+✓ Message sent successfully! Opening WhatsApp to send your message.
 </div>
 
 <form id="contactForm">
@@ -1077,7 +1069,7 @@ rows[i].style.display = 'none';
 }
 }
 
-// Booking Form Handler
+// Booking Form Handler - WhatsApp
 document.getElementById('bookingForm').addEventListener('submit', function(event){
 event.preventDefault();
 
@@ -1090,76 +1082,83 @@ const notes = document.getElementById('notes').value;
 
 const submitBtn = document.getElementById('submitBtn');
 submitBtn.disabled = true;
-submitBtn.textContent = 'Booking...';
+submitBtn.textContent = 'Processing...';
 
-// FormSubmit service
-const formData = new FormData();
-formData.append('name', name);
-formData.append('phone', phone);
-formData.append('email', email);
-formData.append('appointment_date', date);
-formData.append('test', test);
-formData.append('notes', notes);
-
-fetch('https://formsubmit.co/ajax/satyamgay01012000@gmail.com', {
-method: 'POST',
-body: formData
-})
-.then(response => response.json())
-.then(data => {
+// Show success message
 document.getElementById('successMessage').style.display = 'block';
+
+// Create WhatsApp message
+const message = `🏥 *नया Booking Request!*
+
+👤 *नाम:* ${name}
+📱 *फोन:* ${phone}
+📧 *ईमेल:* ${email}
+🧪 *टेस्ट:* ${test}
+📅 *डेट:* ${date}
+📝 *नोट्स:* ${notes || 'कोई नहीं'}
+
+---
+Nidan Janch Ghar Website से आया है`;
+
+// WhatsApp API URL
+const whatsappURL = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+
+// Reset form
 document.getElementById('bookingForm').reset();
+
+// Open WhatsApp
+setTimeout(() => {
+window.open(whatsappURL, '_blank');
 submitBtn.disabled = false;
 submitBtn.textContent = 'Book Appointment';
 
 setTimeout(() => {
 document.getElementById('successMessage').style.display = 'none';
-}, 5000);
-})
-.catch(error => {
-document.getElementById('errorMessage').style.display = 'block';
-submitBtn.disabled = false;
-submitBtn.textContent = 'Book Appointment';
-
-setTimeout(() => {
-document.getElementById('errorMessage').style.display = 'none';
-}, 5000);
-});
+}, 3000);
+}, 500);
 });
 
-// Contact Form Handler
+// Contact Form Handler - WhatsApp
 document.getElementById('contactForm').addEventListener('submit', function(event){
 event.preventDefault();
 
 const name = document.getElementById('contactName').value;
 const email = document.getElementById('contactEmail').value;
-const message = document.getElementById('contactMessage').value;
+const message_text = document.getElementById('contactMessage').value;
 
-const formData = new FormData();
-formData.append('name', name);
-formData.append('email', email);
-formData.append('message', message);
+const submitBtn = event.target.querySelector('button');
+submitBtn.disabled = true;
+submitBtn.textContent = 'Processing...';
 
-fetch('https://formsubmit.co/ajax/satyamgay01012000@gmail.com', {
-method: 'POST',
-body: formData
-})
-.then(response => response.json())
-.then(data => {
+// Show success message
 document.getElementById('contactSuccessMessage').style.display = 'block';
+
+// Create WhatsApp message
+const message = `📬 *नया Contact Message!*
+
+👤 *नाम:* ${name}
+📧 *ईमेल:* ${email}
+💬 *संदेश:* ${message_text}
+
+---
+Nidan Janch Ghar Website से आया है`;
+
+// WhatsApp API URL
+const whatsappURL = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+
+// Reset form
 document.getElementById('contactForm').reset();
+
+// Open WhatsApp
+setTimeout(() => {
+window.open(whatsappURL, '_blank');
+submitBtn.disabled = false;
+submitBtn.textContent = 'Send Message';
 
 setTimeout(() => {
 document.getElementById('contactSuccessMessage').style.display = 'none';
-}, 5000);
-})
-.catch(error => {
-document.getElementById('contactErrorMessage').style.display = 'block';
-
-setTimeout(() => {
-document.getElementById('contactErrorMessage').style.display = 'none';
-}, 5000);
-});
+}, 3000);
+}, 500);
 });
 
 // Report Download Handler
