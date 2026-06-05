@@ -748,7 +748,7 @@ Book Your Test
 </h2>
 
 <div id="successMessage" class="success-message">
-✓ Appointment booked successfully! Opening WhatsApp to confirm your booking.
+✓ Appointment booked successfully! Sending WhatsApp notifications to our team.
 </div>
 
 <form id="bookingForm">
@@ -929,7 +929,7 @@ satyamgay01012000@gmail.com
 <br><br>
 
 <div id="contactSuccessMessage" class="success-message">
-✓ Message sent successfully! Opening WhatsApp to send your message.
+✓ Message sent successfully! Sending WhatsApp notification to our team.
 </div>
 
 <form id="contactForm">
@@ -1069,7 +1069,7 @@ rows[i].style.display = 'none';
 }
 }
 
-// Booking Form Handler - WhatsApp
+// Booking Form Handler - WhatsApp (Both Numbers)
 document.getElementById('bookingForm').addEventListener('submit', function(event){
 event.preventDefault();
 
@@ -1084,9 +1084,6 @@ const submitBtn = document.getElementById('submitBtn');
 submitBtn.disabled = true;
 submitBtn.textContent = 'Processing...';
 
-// Show success message
-document.getElementById('successMessage').style.display = 'block';
-
 // Create WhatsApp message
 const message = `🏥 *नया Booking Request!*
 
@@ -1100,15 +1097,26 @@ const message = `🏥 *नया Booking Request!*
 ---
 Nidan Janch Ghar Website से आया है`;
 
-// WhatsApp API URL
-const whatsappURL = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+// Primary Number (9955817776)
+const whatsappURL1 = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+
+// Alternate Number (7667761564)
+const whatsappURL2 = `https://wa.me/917667761564?text=${encodeURIComponent(message)}`;
+
+// Show success message
+document.getElementById('successMessage').style.display = 'block';
 
 // Reset form
 document.getElementById('bookingForm').reset();
 
-// Open WhatsApp
+// Open WhatsApp messages
 setTimeout(() => {
-window.open(whatsappURL, '_blank');
+window.open(whatsappURL1, '_blank');
+
+setTimeout(() => {
+window.open(whatsappURL2, '_blank');
+}, 1000);
+
 submitBtn.disabled = false;
 submitBtn.textContent = 'Book Appointment';
 
@@ -1118,7 +1126,7 @@ document.getElementById('successMessage').style.display = 'none';
 }, 500);
 });
 
-// Contact Form Handler - WhatsApp
+// Contact Form Handler - WhatsApp (Both Numbers)
 document.getElementById('contactForm').addEventListener('submit', function(event){
 event.preventDefault();
 
@@ -1130,9 +1138,6 @@ const submitBtn = event.target.querySelector('button');
 submitBtn.disabled = true;
 submitBtn.textContent = 'Processing...';
 
-// Show success message
-document.getElementById('contactSuccessMessage').style.display = 'block';
-
 // Create WhatsApp message
 const message = `📬 *नया Contact Message!*
 
@@ -1143,15 +1148,26 @@ const message = `📬 *नया Contact Message!*
 ---
 Nidan Janch Ghar Website से आया है`;
 
-// WhatsApp API URL
-const whatsappURL = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+// Primary Number (9955817776)
+const whatsappURL1 = `https://wa.me/919955817776?text=${encodeURIComponent(message)}`;
+
+// Alternate Number (7667761564)
+const whatsappURL2 = `https://wa.me/917667761564?text=${encodeURIComponent(message)}`;
+
+// Show success message
+document.getElementById('contactSuccessMessage').style.display = 'block';
 
 // Reset form
 document.getElementById('contactForm').reset();
 
-// Open WhatsApp
+// Open WhatsApp messages
 setTimeout(() => {
-window.open(whatsappURL, '_blank');
+window.open(whatsappURL1, '_blank');
+
+setTimeout(() => {
+window.open(whatsappURL2, '_blank');
+}, 1000);
+
 submitBtn.disabled = false;
 submitBtn.textContent = 'Send Message';
 
