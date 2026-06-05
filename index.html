@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nidan Janch Ghar</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5fff8;
+color:#333;
+}
+
+header{
+background:#0f9d58;
+color:white;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition: color 0.3s;
+}
+
+nav a:hover{
+color:#d4ffd4;
+}
+
+.menu-toggle{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:24px;
+cursor:pointer;
+}
+
+.hero{
+background:linear-gradient(rgba(0,0,0,.5),
+rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1581595219315-a187dd40c322');
+background-size:cover;
+background-position:center;
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero-content h1{
+font-size:55px;
+margin-bottom:15px;
+animation: fadeInDown 0.8s ease;
+}
+
+.hero-content p{
+font-size:20px;
+margin-bottom:25px;
+animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.btn{
+background:#0f9d58;
+padding:12px 25px;
+color:white;
+text-decoration:none;
+border-radius:6px;
+display:inline-block;
+border:none;
+cursor:pointer;
+transition: all 0.3s;
+animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.btn:hover{
+background:#0c7d47;
+transform: translateY(-3px);
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+section{
+padding:70px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px;
+font-size:35px;
+color:#0f9d58;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:15px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+transition: all 0.3s;
+}
+
+.card:hover{
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(15,157,88,0.2);
+}
+
+.card h3{
+color:#0f9d58;
+margin-bottom:10px;
+}
+
+.search-box{
+width:100%;
+padding:15px;
+border:2px solid #0f9d58;
+border-radius:10px;
+margin-bottom:20px;
+font-size:16px;
+transition: all 0.3s;
+}
+
+.search-box:focus{
+outline:none;
+box-shadow: 0 0 10px rgba(15,157,88,0.3);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius: 10px;
+overflow: hidden;
+}
+
+table th{
+background:#0f9d58;
+color:white;
+padding:12px;
+}
+
+table td{
+padding:12px;
+border:1px solid #ddd;
+}
+
+table tr:nth-child(even){
+background:#f9f9f9;
+}
+
+table tr:hover{
+background:#e8f5e9;
+}
+
+form{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+max-width:600px;
+margin:0 auto;
+}
+
+form input,
+form textarea,
+form select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:14px;
+transition: all 0.3s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus{
+outline:none;
+border-color:#0f9d58;
+box-shadow: 0 0 8px rgba(15,157,88,0.3);
+}
+
+form button{
+background:#0f9d58;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+width:100%;
+font-weight:bold;
+transition: all 0.3s;
+}
+
+form button:hover{
+background:#0c7d47;
+transform: translateY(-2px);
+}
+
+.review{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.review h4{
+color:#0f9d58;
+margin-bottom:8px;
+}
+
+footer{
+background:#0f9d58;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+color:white;
+text-decoration:none;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+transition: all 0.3s;
+z-index:999;
+}
+
+.whatsapp:hover{
+transform: scale(1.1);
+}
+
+.success-message{
+display:none;
+background:#4caf50;
+color:white;
+padding:15px;
+border-radius:8px;
+margin-bottom:20px;
+text-align:center;
+animation: slideIn 0.5s ease;
+}
+
+@keyframes fadeInDown{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeInUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes slideIn{
+from{
+transform:translateX(-100%);
+}
+to{
+transform:translateX(0);
+}
+}
+
+@media(max-width:768px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero-content h1{
+font-size:35px;
+}
+
+nav{
+display:none;
+position:absolute;
+top:60px;
+left:0;
+right:0;
+background:#0f9d58;
+flex-direction:column;
+padding:20px 8%;
+gap:10px;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
+section{
+padding:40px 5%;
+}
+
+.section-title{
+font-size:25px;
+}
+
+form{
+padding:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+💚 Nidan Janch Ghar
+</div>
+
+<nav id="navMenu">
+<a href="#about">About</a>
+<a href="#tests">Tests</a>
+<a href="#booking">Booking</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<button class="menu-toggle" id="menuToggle">
+<i class="fas fa-bars"></i>
+</button>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Trusted Pathology Services</h1>
+
+<p>
+Accurate Reports • Affordable Prices • Fast Service
+</p>
+
+<a href="#booking" class="btn">
+Book Test Now
+</a>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">
+About Nidan Janch Ghar
+</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
+
+<div>
+
+<h2>Quality Diagnostic Care</h2>
+
+<br>
+
+<p>
+Nidan Janch Ghar provides reliable pathology testing services
+with modern equipment and experienced professionals.
+We focus on accuracy, affordability and patient satisfaction.
+</p>
+
+<br>
+
+<p>
+<strong>Address:</strong><br>
+Itkhori Main Road, Hazaribagh,<br>
+Chatra, Jharkhand.
+</p>
+
+<br>
+
+<p>
+<strong>Phone:</strong> 9955817776<br>
+<strong>Email:</strong> satyamgay01012000@gmail.com
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="tests">
+
+<h2 class="section-title">
+Popular Laboratory Tests
+</h2>
+
+<input
+type="text"
+id="searchInput"
+class="search-box"
+placeholder="Search any test..."
+onkeyup="searchTests()">
+
+<table id="testTable">
+
+<tr>
+<th>Test Name</th>
+<th>Price (₹)</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>CBC</td>
+<td>400</td>
+<td>Checks anemia and infection.</td>
+</tr>
+
+<tr>
+<td>Blood Sugar Fasting</td>
+<td>120</td>
+<td>Diabetes screening.</td>
+</tr>
+
+<tr>
+<td>PP Blood Sugar</td>
+<td>120</td>
+<td>Blood sugar after meals.</td>
+</tr>
+
+<tr>
+<td>HbA1c</td>
+<td>500</td>
+<td>Average blood sugar of 3 months.</td>
+</tr>
+
+<tr>
+<td>Thyroid Profile</td>
+<td>700</td>
+<td>Checks thyroid function.</td>
+</tr>
+
+<tr>
+<td>Vitamin D</td>
+<td>1200</td>
+<td>Bone and immunity health.</td>
+</tr>
+
+<tr>
+<td>Vitamin B12</td>
+<td>900</td>
+<td>Nerve and blood health.</td>
+</tr>
+
+<tr>
+<td>Liver Function Test</td>
+<td>800</td>
+<td>Evaluates liver health.</td>
+</tr>
+
+<tr>
+<td>Kidney Function Test</td>
+<td>850</td>
+<td>Evaluates kidney health.</td>
+</tr>
+
+<tr>
+<td>Lipid Profile</td>
+<td>600</td>
+<td>Measures cholesterol levels.</td>
+</tr>
+
+<tr>
+<td>Urine Routine</td>
+<td>150</td>
+<td>Detects urinary disorders.</td>
+</tr>
+
+<tr>
+<td>Dengue Test</td>
+<td>700</td>
+<td>Detects dengue infection.</td>
+</tr>
+
+<tr>
+<td>Typhoid Test</td>
+<td>450</td>
+<td>Detects typhoid fever.</td>
+</tr>
+
+<tr>
+<td>Malaria Test</td>
+<td>350</td>
+<td>Detects malaria infection.</td>
+</tr>
+
+<tr>
+<td>CRP</td>
+<td>650</td>
+<td>Checks inflammation.</td>
+</tr>
+
+<tr>
+<td>ESR</td>
+<td>150</td>
+<td>Measures inflammation level.</td>
+</tr>
+
+<tr>
+<td>Serum Uric Acid</td>
+<td>250</td>
+<td>Checks gout risk.</td>
+</tr>
+
+<tr>
+<td>Calcium</td>
+<td>250</td>
+<td>Measures calcium level.</td>
+</tr>
+
+<tr>
+<td>Iron Profile</td>
+<td>950</td>
+<td>Checks iron deficiency.</td>
+</tr>
+
+<tr>
+<td>Ferritin</td>
+<td>850</td>
+<td>Measures iron storage.</td>
+</tr>
+
+<tr>
+<td>Creatinine</td>
+<td>250</td>
+<td>Kidney function marker.</td>
+</tr>
+
+<tr>
+<td>HIV Test</td>
+<td>600</td>
+<td>HIV screening.</td>
+</tr>
+
+<tr>
+<td>HBsAg</td>
+<td>500</td>
+<td>Hepatitis B screening.</td>
+</tr>
+
+<tr>
+<td>HCV Test</td>
+<td>700</td>
+<td>Hepatitis C screening.</td>
+</tr>
+
+<tr>
+<td>Pregnancy Test</td>
+<td>250</td>
+<td>Pregnancy confirmation.</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2 class="section-title">
+Health Information
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Low Hemoglobin</h3>
+<p>
+Can cause weakness, tiredness, dizziness and anemia.
+</p>
+</div>
+
+<div class="card">
+<h3>Low Vitamin D</h3>
+<p>
+May cause bone pain, weak muscles and poor immunity.
+</p>
+</div>
+
+<div class="card">
+<h3>Low Vitamin B12</h3>
+<p>
+Can lead to numbness, fatigue and memory problems.
+</p>
+</div>
+
+<div class="card">
+<h3>High Blood Sugar</h3>
+<p>
+May increase the risk of diabetes complications.
+</p>
+</div>
+
+<div class="card">
+<h3>High Cholesterol</h3>
+<p>
+Increases the risk of heart disease and stroke.
+</p>
+</div>
+
+<div class="card">
+<h3>Abnormal Thyroid</h3>
+<p>
+Can affect weight, energy level and mood.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2 class="section-title">
+Home Sample Collection
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Doorstep Collection</h3>
+<p>
+Our trained staff can collect blood and other samples from your home.
+</p>
+</div>
+
+<div class="card">
+<h3>Safe & Hygienic</h3>
+<p>
+We follow strict hygiene and safety protocols.
+</p>
+</div>
+
+<div class="card">
+<h3>Quick Reports</h3>
+<p>
+Fast processing and timely report delivery.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="booking">
+
+<h2 class="section-title">
+Book Your Test
+</h2>
+
+<div id="successMessage" class="success-message">
+✓ Appointment booked successfully! We'll contact you soon.
+</div>
+
+<form id="bookingForm" onsubmit="handleBooking(event)">
+
+<input
+id="name"
+type="text"
+placeholder="Full Name"
+required>
+
+<input
+id="phone"
+type="tel"
+placeholder="Mobile Number"
+pattern="[0-9]{10}"
+title="Please enter a valid 10-digit phone number"
+required>
+
+<input
+id="email"
+type="email"
+placeholder="Email Address">
+
+<input
+id="date"
+type="date"
+required>
+
+<select id="test" required>
+<option value="">Select Test</option>
+<option>CBC</option>
+<option>Blood Sugar</option>
+<option>HbA1c</option>
+<option>Thyroid Profile</option>
+<option>Vitamin D</option>
+<option>Vitamin B12</option>
+<option>LFT</option>
+<option>KFT</option>
+<option>Lipid Profile</option>
+<option>Urine Routine</option>
+<option>Dengue Test</option>
+<option>Typhoid Test</option>
+<option>Malaria Test</option>
+</select>
+
+<textarea
+id="notes"
+rows="5"
+placeholder="Additional Notes"></textarea>
+
+<button type="submit">
+Book Appointment
+</button>
+
+</form>
+
+</section>
+
+
+<section id="reviews">
+
+<h2 class="section-title">
+Patient Reviews
+</h2>
+
+<div class="cards">
+
+<div class="review">
+<h4>★★★★★ Rahul Kumar</h4>
+<p>
+Very accurate reports and friendly staff.
+Highly recommended.
+</p>
+</div>
+
+<div class="review">
+<h4>★★★★★ Priya Singh</h4>
+<p>
+Affordable prices and quick service.
+</p>
+</div>
+
+<div class="review">
+<h4>★★★★★ Amit Verma</h4>
+<p>
+Clean laboratory and professional team.
+</p>
+</div>
+
+<div class="review">
+<h4>★★★★★ Neha Sharma</h4>
+<p>
+Best pathology lab in the city. Excellent experience!
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2 class="section-title">
+Download Report
+</h2>
+
+<form onsubmit="handleReportDownload(event)">
+
+<p style="text-align: center; margin-bottom: 20px;">
+Enter your Report ID and download your report.
+</p>
+
+<input
+id="reportId"
+type="text"
+placeholder="Enter Report ID"
+required>
+
+<button type="submit">
+Download Report
+</button>
+
+</form>
+
+</section>
+
+
+<section id="contact">
+
+<h2 class="section-title">
+Contact Us
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>📍 Address</h3>
+
+<p>
+Itkhori Main Road,<br>
+Hazaribagh,<br>
+Chatra,<br>
+Jharkhand
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📞 Phone</h3>
+
+<p>
+<a href="tel:9955817776" style="color:#0f9d58; text-decoration:none; font-weight:bold;">
+9955817776
+</a>
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📧 Email</h3>
+
+<p>
+<a href="mailto:satyamgay01012000@gmail.com" style="color:#0f9d58; text-decoration:none; font-weight:bold;">
+satyamgay01012000@gmail.com
+</a>
+</p>
+
+</div>
+
+</div>
+
+<br><br>
+
+<div id="contactSuccessMessage" class="success-message">
+✓ Message sent successfully! We'll get back to you soon.
+</div>
+
+<form id="contactForm" onsubmit="handleContact(event)">
+
+<input
+id="contactName"
+type="text"
+placeholder="Your Name"
+required>
+
+<input
+id="contactEmail"
+type="email"
+placeholder="Your Email"
+required>
+
+<textarea
+id="contactMessage"
+rows="5"
+placeholder="Your Message"
+required></textarea>
+
+<button type="submit">
+Send Message
+</button>
+
+</form>
+
+</section>
+
+
+<section>
+
+<h2 class="section-title">
+Find Us
+</h2>
+
+<div class="card">
+
+<p>
+<strong>Nidan Janch Ghar</strong><br><br>
+Itkhori Main Road,<br>
+Hazaribagh,<br>
+Chatra,<br>
+Jharkhand
+</p>
+
+<br>
+
+<p style="color:#999; font-size:14px;">
+Google Maps location can be added when the lab is officially listed.
+</p>
+
+</div>
+
+</section>
+
+
+<a
+href="https://wa.me/919955817776"
+class="whatsapp"
+target="_blank"
+title="Chat on WhatsApp">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+<footer>
+
+<h2>
+💚 Nidan Janch Ghar
+</h2>
+
+<br>
+
+<p>
+Accurate Testing • Trusted Reports • Affordable Prices
+</p>
+
+<br>
+
+<p>
+Phone: <a href="tel:9955817776" style="color:white; text-decoration:none;">9955817776</a>
+</p>
+
+<p>
+Email: <a href="mailto:satyamgay01012000@gmail.com" style="color:white; text-decoration:none;">satyamgay01012000@gmail.com</a>
+</p>
+
+<br>
+
+<p>
+© 2026 Nidan Janch Ghar. All Rights Reserved.
+</p>
+
+<p style="margin-top:15px; font-size:14px;">
+Website Designed & Developed By <strong>Harish Kumar</strong>
+</p>
+
+</footer>
+
+
+<script>
+
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle.addEventListener('click', function(){
+navMenu.classList.toggle('active');
+});
+
+// Close menu when link is clicked
+document.querySelectorAll('#navMenu a').forEach(link => {
+link.addEventListener('click', function(){
+navMenu.classList.remove('active');
+});
+});
+
+// Search Tests Function
+function searchTests(){
+const searchInput = document.getElementById('searchInput').value.toLowerCase();
+const table = document.getElementById('testTable');
+const rows = table.getElementsByTagName('tr');
+
+for(let i = 1; i < rows.length; i++){
+const testName = rows[i].getElementsByTagName('td')[0].textContent.toLowerCase();
+const purpose = rows[i].getElementsByTagName('td')[2].textContent.toLowerCase();
+
+if(testName.includes(searchInput) || purpose.includes(searchInput)){
+rows[i].style.display = '';
+} else {
+rows[i].style.display = 'none';
+}
+}
+}
+
+// Booking Form Handler
+function handleBooking(event){
+event.preventDefault();
+
+const name = document.getElementById('name').value;
+const phone = document.getElementById('phone').value;
+const email = document.getElementById('email').value;
+const date = document.getElementById('date').value;
+const test = document.getElementById('test').value;
+
+// Show success message
+const successMsg = document.getElementById('successMessage');
+successMsg.style.display = 'block';
+
+// Reset form
+document.getElementById('bookingForm').reset();
+
+// Hide message after 5 seconds
+setTimeout(() => {
+successMsg.style.display = 'none';
+}, 5000);
+
+// Log data (in real app, send to server)
+console.log({
+name: name,
+phone: phone,
+email: email,
+date: date,
+test: test
+});
+}
+
+// Report Download Handler
+function handleReportDownload(event){
+event.preventDefault();
+
+const reportId = document.getElementById('reportId').value;
+
+if(!reportId.trim()){
+alert('Please enter a Report ID');
+return;
+}
+
+alert('Report download initiated for ID: ' + reportId + '\nPlease check your email for the download link.');
+document.getElementById('reportId').value = '';
+}
+
+// Contact Form Handler
+function handleContact(event){
+event.preventDefault();
+
+const name = document.getElementById('contactName').value;
+const email = document.getElementById('contactEmail').value;
+const message = document.getElementById('contactMessage').value;
+
+// Show success message
+const successMsg = document.getElementById('contactSuccessMessage');
+successMsg.style.display = 'block';
+
+// Reset form
+document.getElementById('contactForm').reset();
+
+// Hide message after 5 seconds
+setTimeout(() => {
+successMsg.style.display = 'none';
+}, 5000);
+
+// Log data (in real app, send to server)
+console.log({
+name: name,
+email: email,
+message: message
+});
+}
+
+</script>
+
+</body>
+</html>
